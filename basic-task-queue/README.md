@@ -14,8 +14,8 @@ This is a simple **task queue system** using **Node.js, Express, BullMQ, Redis, 
 ### 1️⃣ Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/task-queue.git
-cd task-queue
+git clone https://github.com/abhishekguha95/learn-nodejs.git
+cd basic-task-queue
 ```
 
 ### 2️⃣ Start Services with Docker Compose
