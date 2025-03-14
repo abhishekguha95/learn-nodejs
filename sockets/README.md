@@ -25,8 +25,8 @@ This project demonstrates **real-time communication** using **WebSockets** in tw
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-repo/counter-websocket.git
-   cd counter-websocket
+   git clone https://github.com/abhishekguha95/learn-nodejs.git
+   cd sockets
    ```
 
 2. **Install Dependencies**
@@ -85,7 +85,7 @@ It will run on:
 ## **📜 File Structure**
 
 ```
-/counter-websocket
+/sockets
 │── ws-server.js         # Pure WebSocket implementation
 │── socketio-server.js   # Socket.io implementation
 │── index.html           # Frontend for Socket.io
