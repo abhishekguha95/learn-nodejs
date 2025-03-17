@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.3
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - elk
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.17.3
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+
+  app:
+    build: .
+    container_name: log_aggr_node_app
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk
+
+volumes:
+  elasticsearch_data:
+    driver: local
+
+networks:
+  elk:
+    driver: bridge
